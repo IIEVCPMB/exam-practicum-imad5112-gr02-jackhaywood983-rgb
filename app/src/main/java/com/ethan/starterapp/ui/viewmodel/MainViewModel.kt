@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 class MainViewModel : ViewModel() {
     val itemNames = mutableStateListOf("Tent", "Marshmallows", "Flashlight")
     val itemCategories = mutableStateListOf("Shelter", "Food", "Safety")
-    val itemQuantities = mutableStateListOf(1, 3, 2)
-    val itemComments = mutableStateListOf("4-person waterproof", "For S'mores (Mega size)", "Check batteries (AA)")
+    val itemQuantities = mutableStateListOf(1, 3, 2,4)
+    val itemComments = mutableStateListOf("4-person waterproof", "Delicious (Mega size)", "Check batteries needs Two (AAA)")
     
     fun getTotalItems(): Int {
         var total = 0
