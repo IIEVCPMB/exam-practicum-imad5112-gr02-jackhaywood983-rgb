@@ -52,7 +52,6 @@ fun ChecklistScreen(navController: NavController, viewModel: MainViewModel = vie
         }
 
         Spacer(Modifier.height(16.dp))
-        // Back to Base button
         Button(
             onClick = { navController.popBackStack() },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3282B8)),

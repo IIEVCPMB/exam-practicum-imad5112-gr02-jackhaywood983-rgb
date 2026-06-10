@@ -80,7 +80,7 @@ fun AddItemScreen(navController: NavController, viewModel: MainViewModel = viewM
             onClick = {
                 val result = viewModel.addItem(name, category, qty, comment)
                 if (result == "success") {
-                    navController.popBackStack() // back to main
+                    navController.popBackStack()
                 } else {
                     errorMsg = result
                 }
