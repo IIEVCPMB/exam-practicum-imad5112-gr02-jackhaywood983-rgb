@@ -9,7 +9,6 @@ class MainViewModel : ViewModel() {
     val itemQuantities = mutableStateListOf(1, 3, 2)
     val itemComments = mutableStateListOf("4-person waterproof", "For S'mores (Mega size)", "Check batteries (AA)")
 
-    //loop to calculate total
     fun getTotalItems(): Int {
         var total = 0
         for (qty in itemQuantities) {

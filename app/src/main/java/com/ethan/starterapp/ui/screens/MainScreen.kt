@@ -1,43 +1,31 @@
-package com.ethan.starterapp.ui.screens
+package com.ethan.starterapp
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import com.ethan.starterapp.ui.viewmodel.MainViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.runtime.mutableStateListOf
+import androidx.lifecycle.ViewModel
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun MainScreen(navController: NavController, viewModel: MainViewModel = viewModel()) {
-    val count by viewModel.counter.collectAsState()
+class MainViewScreen : ViewModel() {
+    // Parallel arrays
+    val itemNames = mutableStateListOf("Tent", "Marshmallows", "Flashlight")
+    val itemCategories = mutableStateListOf("Shelter", "Food", "Safety")
+    val itemQuantities = mutableStateListOf(1, 3, 2)
+    val itemComments = mutableStateListOf("4-person waterproof", "For S'mores (Mega size)", "Check batteries (AA)")
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Starter App") },
-                actions = {
-                    IconButton(onClick = { navController.navigate("settings") }) {
-                        Icon(Icons.Default.Settings, contentDescription = "Settings")
-                    }
-                }
-            )
-        },
-        floatingActionButton = {
-            FloatingActionButton(onClick = { viewModel.increment() }) {
-                Text("+")
-            }
+    fun getTotalItems(): Int {
+        var total = 0
+        for (i in itemQuantities.indices) {
+            total += itemQuantities[i]
         }
-    ) { padding ->
-        Box(Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text("Counter: $count", style = MaterialTheme.typography.headlineMedium)
-                Text("Tap + to increment", style = MaterialTheme.typography.bodyMedium)
-            }
-        }
+        return total
+    }
+    fun addItem(name: String, category: String, qtyStr: String, comment: String): String {
+        if (name.isBlank()) return "Item name cannot be empty"
+        val qty = qtyStr.toIntOrNull()
+        if (qty == null || qty <= 0) return "Quantity must be a number > 0"
+
+        itemNames.add(name)
+        itemCategories.add(category)
+        itemQuantities.add(qty)
+        itemComments.add(comment)
+        return "success"
     }
 }
