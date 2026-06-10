@@ -21,7 +21,7 @@ fun SplashScreen(navController: NavController) {
     LaunchedEffect(Unit) {
         delay(3000)
         navController.navigate("main") {
-            popUpTo("splash") { inclusive = true } // remove splash from back stack
+            popUpTo("splash") { inclusive = true }
         }
     }
     Column(

@@ -4,13 +4,12 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 
 class MainViewModel : ViewModel() {
-    // Parallel arrays as required by brief
     val itemNames = mutableStateListOf("Tent", "Marshmallows", "Flashlight")
     val itemCategories = mutableStateListOf("Shelter", "Food", "Safety")
     val itemQuantities = mutableStateListOf(1, 3, 2)
     val itemComments = mutableStateListOf("4-person waterproof", "For S'mores (Mega size)", "Check batteries (AA)")
 
-    // Use loop to calculate total - for marks
+    //loop to calculate total
     fun getTotalItems(): Int {
         var total = 0
         for (qty in itemQuantities) {
